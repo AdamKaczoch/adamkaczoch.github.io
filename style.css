@@ -1,0 +1,176 @@
+/* =========================================================
+   Adam Kaczoch · strona osobista
+   Styl jak tutoriale w notatniku (docs/STYLE.md): terminalowa czerń,
+   serif w tytułach, mono w etykietach, jeden czerwony akcent.
+   Kolory tylko przez tokeny z :root — zmiana w jednym miejscu.
+   ========================================================= */
+:root {
+  --bg: #050505; --panel: #0b0b0b; --panel-2: #111111; --line: #262626; --dash: #333333;
+  --text: #f2f0eb; --text-2: #b9b6b0; --dim: #7d7a75; --red: #e8352a; --red-ink: #1a0503;
+  --dot: rgba(255, 255, 255, .11);
+  --serif: "Young Serif", "Iowan Old Style", Georgia, serif;
+  --sans: "Geist", "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: "Geist Mono", "JetBrains Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f4f2ed; --panel: #fbfaf7; --panel-2: #efece6; --line: #d6d2ca; --dash: #c9c4ba;
+    --text: #0c0c0c; --text-2: #3d3b38; --dim: #7a766f; --red: #d42a1f; --red-ink: #ffffff;
+    --dot: rgba(0, 0, 0, .12); color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f4f2ed; --panel: #fbfaf7; --panel-2: #efece6; --line: #d6d2ca; --dash: #c9c4ba;
+  --text: #0c0c0c; --text-2: #3d3b38; --dim: #7a766f; --red: #d42a1f; --red-ink: #ffffff;
+  --dot: rgba(0, 0, 0, .12); color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-underline-offset: 3px; text-decoration-color: var(--dim); }
+a:hover { text-decoration-color: var(--red); }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+code { font: 14px var(--mono); color: var(--text); }
+p { margin: 0 0 12px; }
+
+/* siatka kropek, wygaszana ku dołowi */
+.dots { position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background-image: radial-gradient(var(--dot) 1px, transparent 1.2px); background-size: 14px 14px;
+  mask-image: linear-gradient(to bottom, #000 0, transparent 70%); -webkit-mask-image: linear-gradient(to bottom, #000 0, transparent 70%); }
+
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 16px; top: 12px; z-index: 20; background: var(--text); color: var(--bg); padding: 8px 12px; font: 13px var(--mono); }
+
+/* ---------- górny pasek ---------- */
+.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.top-in { max-width: 1240px; margin: 0 auto; padding: 14px 32px; display: flex; align-items: center; gap: 28px; }
+.brand { text-decoration: none; }
+.brand-mark { display: inline-block; font: 600 17px var(--mono); letter-spacing: .04em; border: 1.5px solid var(--text);
+  padding: 2px 8px; box-shadow: 3px 3px 0 var(--red); }
+nav { display: flex; gap: 26px; margin-left: auto; }
+nav a { font: 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--text-2); text-decoration: none; padding: 4px 0; border-bottom: 2px solid transparent; }
+nav a:hover { color: var(--text); border-bottom-color: var(--red); }
+.theme { background: none; border: 1px solid var(--line); color: var(--text-2); width: 34px; height: 34px; font: 15px var(--mono); cursor: pointer; }
+.theme:hover { border-color: var(--text); color: var(--text); }
+
+main { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+/* ---------- start: nazwisko i terminal ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-areas: "text term";
+  gap: 56px; align-items: center; padding: 88px 0 96px; }
+.hero-text { grid-area: text; }
+.term { grid-area: term; }
+h1 { font: 400 clamp(52px, 8vw, 104px)/.98 var(--serif); letter-spacing: -.01em; margin: 0 0 24px; }
+.lead { font-size: 19px; color: var(--text-2); max-width: 54ch; margin-bottom: 32px; }
+.actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
+.btn { display: inline-block; font: 500 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  padding: 12px 20px; border: 1px solid var(--line); color: var(--text); background: transparent; }
+.btn:hover { border-color: var(--text); }
+.btn.red { background: var(--red); border-color: var(--red); color: var(--red-ink); font-weight: 600; }
+.btn.red:hover { border-color: var(--red); filter: brightness(1.08); }
+.cta { position: relative; display: inline-block; padding: 6px; }
+.cta i { position: absolute; width: 14px; height: 14px; border-color: var(--red); border-style: solid; }
+.cta i:nth-of-type(1) { top: 0; left: 0; border-width: 1.5px 0 0 1.5px; }
+.cta i:nth-of-type(2) { top: 0; right: 0; border-width: 1.5px 1.5px 0 0; }
+.cta i:nth-of-type(3) { bottom: 0; left: 0; border-width: 0 0 1.5px 1.5px; }
+.cta i:nth-of-type(4) { bottom: 0; right: 0; border-width: 0 1.5px 1.5px 0; }
+
+/* panel z narożnikami-klamrami */
+.bracket { position: relative; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 85%, transparent); }
+.bracket::before, .bracket::after { content: ""; position: absolute; width: 22px; height: 22px; border-color: var(--text); border-style: solid; }
+.bracket::before { top: -1px; left: -1px; border-width: 1.5px 0 0 1.5px; }
+.bracket::after { bottom: -1px; right: -1px; border-width: 0 1.5px 1.5px 0; }
+
+.term-bar { display: flex; gap: 12px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line);
+  font: 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); }
+.term-bar .sep { flex: 1; border-top: 1px dashed var(--dash); }
+.term-body { margin: 0; padding: 22px 20px 26px; font: 15px/1.75 var(--mono); color: var(--text); white-space: pre-wrap; min-height: 15.5em; }
+.term-body .p { color: var(--red); }
+.cursor { display: inline-block; width: .6em; height: 1.1em; vertical-align: -.2em; background: var(--text); animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .cursor { animation: none; } }
+
+/* ---------- sekcje ---------- */
+.block { padding: 72px 0; border-top: 1px dashed var(--dash); }
+.meta { display: flex; gap: 14px; align-items: center; font: 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--dim); margin-bottom: 18px; }
+.meta .sep { flex: 1; border-top: 1px dashed var(--dash); }
+.red { color: var(--red); }
+h2 { font: 400 clamp(32px, 4.2vw, 46px)/1.1 var(--serif); margin: 0 0 14px; }
+h3 { font: 400 23px/1.25 var(--serif); margin: 0 0 10px; }
+.intro { color: var(--text-2); max-width: 62ch; margin-bottom: 36px; }
+
+/* ---------- ścieżka jako DAG ---------- */
+.dag { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 44px; }
+.task { position: relative; border: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 85%, transparent); padding: 20px 22px 18px; }
+.task + .task::before { content: ""; position: absolute; top: 34px; left: -45px; width: 44px; border-top: 1.5px solid var(--dim); }
+.task + .task::after { content: ""; position: absolute; top: 30px; left: -10px; border: 5px solid transparent; border-left: 8px solid var(--dim); border-right: 0; }
+.task.ok { border-left: 3px solid var(--text); }
+.task.run { border-left: 3px solid var(--red); }
+.task-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 12px; }
+.task-head code { font: 500 15px var(--mono); }
+.task p { color: var(--text-2); font-size: 15.5px; margin: 0; }
+
+.state { font: 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--line); color: var(--text); white-space: nowrap; }
+.ok .state, .state.ok { border-color: var(--text); }
+.run .state { border-color: var(--red); color: var(--red); }
+.state.queued { border-style: dashed; color: var(--dim); }
+
+.code { margin: 28px 0 0; padding: 16px 20px; border: 1px solid var(--line); background: var(--panel-2); font: 14px/1.6 var(--mono); color: var(--text-2); overflow-x: auto; }
+.code .c { color: var(--dim); } .code .k { color: var(--red); }
+
+/* ---------- projekty ---------- */
+.project { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; padding: 30px 0; border-top: 1px solid var(--line); }
+.project:last-child { border-bottom: 1px solid var(--line); }
+.project-side { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.stack { display: flex; flex-direction: column; font: 12px/1.9 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+.project-main h3 { font-size: clamp(24px, 2.6vw, 30px); margin-bottom: 14px; }
+.kv { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 20px; border-top: 1px dashed var(--dash); padding: 10px 0 2px; }
+.kv .k { font: 12px/1.9 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+.kv p { color: var(--text-2); margin: 0 0 8px; }
+.note { font: 12px var(--mono); letter-spacing: .08em; color: var(--dim); margin: 10px 0 0; }
+
+/* ---------- zasady i stack ---------- */
+.rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); margin-top: 28px; }
+.rule { padding: 24px 26px 18px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: color-mix(in srgb, var(--panel) 70%, transparent); }
+.rule p { color: var(--text-2); font-size: 16px; margin: 0; }
+.stack-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: 44px; }
+.col-h { font: 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+.stack-grid ul { list-style: none; padding: 0; margin: 0; }
+.stack-grid li { padding: 9px 0; border-top: 1px dashed var(--dash); color: var(--text-2); }
+
+/* ---------- kontakt ---------- */
+.contact h2 { font-size: clamp(34px, 5vw, 58px); max-width: 22ch; }
+.links { list-style: none; padding: 0; margin: 0; display: flex; gap: 12px; flex-wrap: wrap; }
+.links a { display: inline-block; font: 500 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  padding: 12px 20px; border: 1px solid var(--line); }
+.links a:hover { border-color: var(--text); }
+
+footer { max-width: 1240px; margin: 0 auto; padding: 26px 32px 40px; border-top: 1px solid var(--line);
+  font: 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+
+/* ---------- jedna kolumna ---------- */
+@media (max-width: 980px) {
+  .hero { grid-template-columns: minmax(0, 1fr); grid-template-areas: "text" "term"; gap: 40px; padding: 56px 0 64px; }
+  .dag { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .task + .task::before { top: -29px; left: 30px; width: 0; height: 28px; border-top: 0; border-left: 1.5px solid var(--dim); }
+  .task + .task::after { top: -9px; left: 26px; border: 5px solid transparent; border-top: 8px solid var(--dim); border-bottom: 0; }
+  .project { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .project-side { flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .stack { flex-direction: row; flex-wrap: wrap; gap: 4px 14px; line-height: 1.4; }
+}
+@media (max-width: 560px) {
+  .top-in, main, footer { padding-left: 16px; padding-right: 16px; }
+  .top-in { gap: 14px; }
+  nav { gap: 14px; }
+  nav a:nth-child(n+3) { display: none; }
+  .block { padding: 56px 0; }
+  .kv { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .rules, .stack-grid { grid-template-columns: minmax(0, 1fr); }
+  .term-body { font-size: 13.5px; min-height: 0; }
+  .lead { font-size: 17.5px; }
+}

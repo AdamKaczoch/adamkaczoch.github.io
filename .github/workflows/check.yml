@@ -1,0 +1,16 @@
+# Uruchamia test strony przy każdym pushu na main i przy każdym pull requeście.
+# Czerwony krzyżyk na GitHubie = coś jest zepsute, zanim zobaczy to rekruter.
+name: Sprawdź stronę
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Test linków, tytułów i opisów
+        run: python3 scripts/check_site.py

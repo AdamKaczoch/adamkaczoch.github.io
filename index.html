@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adam Kaczoch · analityk danych w drodze do data engineeringu</title>
+  <meta name="description" content="Adam Kaczoch: analityk danych, który buduje potoki danych w Pythonie, SQL i Airflow na GCP i uczy się pracy z agentami AI. Projekty, sposób pracy i kontakt.">
+  <meta property="og:title" content="Adam Kaczoch · dane, potoki, agenci AI">
+  <meta property="og:description" content="Analityk danych w drodze do data engineeringu. Python, SQL, Airflow, GCP i agenci AI.">
+  <meta property="og:type" content="website">
+  <!-- TODO po zakupie domeny: <meta property="og:image" content="https://adamkaczoch.pl/og.png"> -->
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400..600&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dots" aria-hidden="true"></div>
+  <a class="skip" href="#tresc">Przejdź do treści</a>
+
+  <header class="top">
+    <div class="top-in">
+      <a class="brand" href="#start" aria-label="Adam Kaczoch, początek strony"><span class="brand-mark">AK</span></a>
+      <nav aria-label="Sekcje">
+        <a href="#sciezka">Ścieżka</a>
+        <a href="#projekty">Projekty</a>
+        <a href="#praca">Jak pracuję</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+      <button class="theme" id="theme" type="button" aria-label="Zmień motyw: systemowy, ciemny, jasny">◐</button>
+    </div>
+  </header>
+
+  <main id="tresc">
+    <!-- ============ START: terminal + nazwisko ============ -->
+    <section class="hero" id="start">
+      <div class="term bracket" aria-label="Terminal: kim jestem">
+        <div class="term-bar"><span>~/adam</span><span class="sep"></span><span>zsh</span></div>
+        <pre class="term-body" id="term"><span class="p">$</span> whoami
+adam kaczoch
+<span class="p">$</span> cat rola.txt
+analityk danych → data engineer
+<span class="p">$</span> echo $STACK
+python · sql · airflow · gcp · llm
+<span class="p">$</span> <span class="cursor" aria-hidden="true"></span></pre>
+      </div>
+
+      <div class="hero-text">
+        <h1>Adam Kaczoch</h1>
+        <p class="lead">Analityk danych, który uczy się budować systemy, a nie tylko raporty. Piszę potoki danych w Pythonie i SQL, układam DAG-i w Airflow na GCP, a teraz uczę się pracy z agentami AI.</p>
+        <div class="actions">
+          <span class="cta"><a class="btn red" href="#projekty">Zobacz projekty →</a><i></i><i></i><i></i><i></i></span>
+          <a class="btn" href="https://github.com/AdamKaczoch">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ŚCIEŻKA jako DAG ============ -->
+    <section class="block" id="sciezka">
+      <div class="meta"><span class="red">Ścieżka</span><span class="sep"></span><span>kariera.py</span></div>
+      <h2>Kariera to DAG, a nie drabina</h2>
+      <p class="intro">Każdy etap korzysta z wyniku poprzedniego. Statusy jak w Airflow: co już działa, a co właśnie się wykonuje.</p>
+
+      <ol class="dag">
+        <li class="task ok">
+          <div class="task-head"><code>analiza_danych</code><span class="state">success</span></div>
+          <p>SQL, Python, raporty dla biznesu. Wiem, jakie pytania zadaje firma i jak wyglądają dane, które na nie odpowiadają.</p>
+        </li>
+        <li class="task run">
+          <div class="task-head"><code>inzynieria_danych</code><span class="state">running</span></div>
+          <p>DAG-i w Cloud Composer, BigQuery, GCS. Teraz: testy jakości, idempotentne ładowania, CI/CD i kod, który utrzyma ktoś inny.</p>
+        </li>
+        <li class="task run">
+          <div class="task-head"><code>agenci_ai</code><span class="state">running</span></div>
+          <p>Szkolenie z budowy agentów AI: jak działa model, narzędzia, kontekst i pętla agenta. Uczę się, gdzie im ufać, a gdzie postawić test.</p>
+        </li>
+      </ol>
+<pre class="code" aria-label="Ten sam DAG w Pythonie"><span class="c"># kariera.py</span>
+analiza_danych <span class="k">&gt;&gt;</span> inzynieria_danych <span class="k">&gt;&gt;</span> agenci_ai</pre>
+    </section>
+
+    <!-- ============ PROJEKTY ============ -->
+    <section class="block" id="projekty">
+      <div class="meta"><span class="red">Projekty</span><span class="sep"></span><span>3 wpisy</span></div>
+      <h2>Co zbudowałem i co czeka w kolejce</h2>
+
+      <article class="project">
+        <div class="project-side">
+          <span class="state ok">działa</span>
+          <span class="stack"><span>Node.js</span><span>JavaScript</span><span>Markdown</span></span>
+        </div>
+        <div class="project-main">
+          <h3>Notatnik do szkolenia z agentów AI</h3>
+          <div class="kv"><span class="k">Problem</span><p>Notatki z kursu rozrzucone po aplikacjach, bez historii zmian.</p></div>
+          <div class="kv"><span class="k">Rozwiązanie</span><p>Lokalny edytor Markdown i mały serwer Node bez żadnych zależności. Notatki to zwykłe pliki w repo, a tutoriale do lekcji składają się też w EPUB na czytnik.</p></div>
+          <div class="kv"><span class="k">Czego się nauczyłem</span><p>API HTTP od zera, walidacja wejścia, pliki jako źródło prawdy i praca z agentem AI jako współautorem kodu.</p></div>
+          <p class="note">Repo prywatne: zawiera moje notatki.</p>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-side">
+          <span class="state ok">działa</span>
+          <span class="stack"><span>HTML</span><span>CSS</span><span>GitHub Actions</span></span>
+        </div>
+        <div class="project-main">
+          <h3>Ta strona</h3>
+          <div class="kv"><span class="k">Problem</span><p>Wizytówka z kreatora nic nie mówi o tym, czy umiem budować.</p></div>
+          <div class="kv"><span class="k">Rozwiązanie</span><p>Ręcznie napisany HTML i CSS, bez frameworka. Każdy push uruchamia test, który sprawdza linki, tytuły i opisy, zanim zmiana trafi do sieci.</p></div>
+          <div class="kv"><span class="k">Czego się nauczyłem</span><p>DNS, HTTPS, hosting statyczny i CI w najprostszej postaci.</p></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-side">
+          <span class="state queued">w kolejce</span>
+          <span class="stack"><span>Python</span><span>Airflow</span><span>BigQuery</span></span>
+        </div>
+        <div class="project-main">
+          <h3>Kursy walut NBP w BigQuery</h3>
+          <div class="kv"><span class="k">Plan</span><p>DAG, który codziennie pobiera kursy z publicznego API NBP, ładuje je do BigQuery bez duplikatów przy ponownym uruchomieniu i sprawdza dane przed załadowaniem.</p></div>
+          <div class="kv"><span class="k">Po co</span><p>Publiczny projekt na otwartych danych, który pokazuje to samo co praca, bez firmowego kodu.</p></div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ JAK PRACUJĘ ============ -->
+    <section class="block" id="praca">
+      <div class="meta"><span class="red">Jak pracuję</span><span class="sep"></span><span>4 zasady · stack</span></div>
+      <h2>Zasady, których się trzymam</h2>
+      <div class="rules">
+        <div class="rule">
+          <h3>Każde ładowanie można powtórzyć</h3>
+          <p>Retry albo backfill nie może zdublować danych. Zapis do stagingu, potem <code>MERGE</code>, a nie dopisywanie w ciemno.</p>
+        </div>
+        <div class="rule">
+          <h3>Test przed załadowaniem</h3>
+          <p>Schemat pilnuje kształtu, a nie prawdy. Słowniki, zakresy i zgodność sum sprawdzam, zanim dane trafią do tabeli raportowej.</p>
+        </div>
+        <div class="rule">
+          <h3>Agent to pętla, nie magia</h3>
+          <p>Model dopisuje tekst, narzędzia wykonują pracę, a ja decyduję, co wymaga testu. Wynik od AI sprawdzam jak każde inne źródło danych.</p>
+        </div>
+        <div class="rule">
+          <h3>Najpierw pytanie, potem kod</h3>
+          <p>Z analizy wyniosłem nawyk: zanim coś zbuduję, ustalam, na jakie pytanie biznesu ma odpowiadać.</p>
+        </div>
+      </div>
+
+      <div class="stack-grid">
+        <div>
+          <h3 class="col-h">Na co dzień</h3>
+          <ul><li>SQL i BigQuery</li><li>Python</li><li>Airflow / Cloud Composer</li><li>GCP: GCS, IAM</li></ul>
+        </div>
+        <div>
+          <h3 class="col-h">Teraz się uczę</h3>
+          <ul><li>Testy i CI/CD</li><li>Architektura aplikacji</li><li>LLM API i agenci AI</li><li>Git na co dzień</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KONTAKT ============ -->
+    <section class="block contact" id="kontakt">
+      <div class="meta"><span class="red">Kontakt</span><span class="sep"></span><span>odpowiadam w ciągu kilku dni</span></div>
+      <h2>Rozmawiajmy o danych, potokach i AI.</h2>
+      <p class="intro">Najszybciej przez LinkedIn. Kod i postępy w nauce są na GitHubie.</p>
+      <ul class="links">
+        <!-- TODO: wpisz swój adres e-mail i profil LinkedIn -->
+        <li><a href="mailto:twoj-adres@example.com">E-mail</a></li>
+        <li><a href="https://www.linkedin.com/in/twoj-profil">LinkedIn</a></li>
+        <li><a href="https://github.com/AdamKaczoch">GitHub</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>© 2026 Adam Kaczoch · bez ciasteczek i bez śledzenia · HTML i CSS pisane ręcznie</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
